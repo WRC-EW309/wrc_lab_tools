@@ -16,14 +16,14 @@ def main():
     
     # script_dir = os.path.dirname(os.path.abspath(__file__))
     user = os.getenv('USER')
-    save_path = f"/home/{user}/ew309_workspace/video_data"
+    save_path = f"/home/{user}/ew309_workspace/videos"
     
     # Construct stream URL from arguments
     stream_url = f'http://{args.ip}:{args.port}/stream?topic={args.topic}'
     print(f"Connecting to: {stream_url}")
     
-    cap = cv2.VideoCapture('rtsp://192.168.2.1:8554/back')
-    #cap = cv2.VideoCapture(stream_url)
+    # cap = cv2.VideoCapture('rtsp://192.168.2.1:8554/back')
+    cap = cv2.VideoCapture(stream_url)
 
     # Get video properties for the writer
     frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
