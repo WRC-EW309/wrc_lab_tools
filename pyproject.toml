@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "wrc-lab-tools"
-version = "0.1.0"
+version = "0.2.0"
 description = "Utility tools for WRC lab workspace"
 readme = "README.md"
 requires-python = ">=3.8"
@@ -23,7 +23,8 @@ classifiers = [
 
 dependencies = [
     # Add your dependencies here
-    "opencv-python"
+    "opencv-python",
+    "roslibpy"
 ]
 
 [project.optional-dependencies]
@@ -38,5 +39,5 @@ video-stream-viewer = "wrc_lab_tools.video_stream_viewer:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["wrc_lab_tools*"]
+include = ["wrc_lab_tools*", "surfer_lib*"]
 exclude = ["tests*"]

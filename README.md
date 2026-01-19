@@ -26,6 +26,10 @@ import wrc_lab_tools
 # Your code here
 ```
 
+## Importing Surfer Library
+1.) Ensure your virutal environment is loaded
+2.) From your python script from surfer_lib.surfer import Surfer
+
 ## Development
 
 To install with development dependencies:
