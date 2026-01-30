@@ -51,14 +51,14 @@ class Surfer:
         self.detect_sub = roslibpy.Topic(self.client, '/'+self.name+'/detections', 'vision_msgs/Detection2DArray')
         self.detect_sub.subscribe(self.detection_callback)
 
-        self.cmd_vel_pub = roslibpy.Topic(self.client, '/'+self.name+'/set_cmd_vel', 'geometry_msgs/Twist')
-        self.cmd_vel_pub.advertise()
+        # self.cmd_vel_pub = roslibpy.Topic(self.client, '/'+self.name+'/set_cmd_vel', 'geometry_msgs/Twist')
+        # self.cmd_vel_pub.advertise()
 
         self.cmd_frc_pub = roslibpy.Topic(self.client, '/'+self.name+'/set_cmd_force', 'geometry_msgs/Twist')
         self.cmd_frc_pub.advertise()
 
-        self.cmd_mot_pub = roslibpy.Topic(self.client, '/'+self.name+'/set_cmd_motor', 'std_msgs/Float32MultiArray')
-        self.cmd_mot_pub.advertise()
+        # self.cmd_mot_pub = roslibpy.Topic(self.client, '/'+self.name+'/set_cmd_motor', 'std_msgs/Float32MultiArray')
+        # self.cmd_mot_pub.advertise()
 
         self.srv_reset_imu = roslibpy.Service(self.client, '/'+self.name+'/reset_imu', 'std_srvs/Trigger')
 
