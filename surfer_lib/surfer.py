@@ -175,23 +175,23 @@ class Surfer:
         })
         self.cmd_frc_pub.publish(twist_msg)
 
-    def set_motor_cmd(self, m1: float = 0.0, m2: float = 0.0, m3: float = 0.0, m4: float = 0.0) -> None:
-        """Publish motor command to the motor_cmd topic.
+    # def set_motor_cmd(self, m1: float = 0.0, m2: float = 0.0, m3: float = 0.0, m4: float = 0.0) -> None:
+    #     """Publish motor command to the motor_cmd topic.
         
-        Args:
-            m1: motor 1 command (-1.0 to 1.0)
-            m2: motor 2 command (-1.0 to 1.0)
-            m3: motor 3 command (-1.0 to 1.0)
-            m4: motor 4 command (-1.0 to 1.0)
-        """
-        m1 = utils.saturate(m1, -1.0, 1.0)
-        m2 = utils.saturate(m2, -1.0, 1.0)
-        m3 = utils.saturate(m3, -1.0, 1.0)
-        m4 = utils.saturate(m4, -1.0, 1.0)
-        motor_msg = roslibpy.Message({
-            'data': [m1, m2, m3, m4]
-        })
-        self.cmd_mot_pub.publish(motor_msg)
+    #     Args:
+    #         m1: motor 1 command (-1.0 to 1.0)
+    #         m2: motor 2 command (-1.0 to 1.0)
+    #         m3: motor 3 command (-1.0 to 1.0)
+    #         m4: motor 4 command (-1.0 to 1.0)
+    #     """
+    #     m1 = utils.saturate(m1, -1.0, 1.0)
+    #     m2 = utils.saturate(m2, -1.0, 1.0)
+    #     m3 = utils.saturate(m3, -1.0, 1.0)
+    #     m4 = utils.saturate(m4, -1.0, 1.0)
+    #     motor_msg = roslibpy.Message({
+    #         'data': [m1, m2, m3, m4]
+    #     })
+    #     self.cmd_mot_pub.publish(motor_msg)
             
     def connect(self) -> None:
         """Establish connection to rosbridge server."""
