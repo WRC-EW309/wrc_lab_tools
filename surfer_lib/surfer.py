@@ -75,7 +75,6 @@ class Surfer:
         self.eul[2] = msg['orientation']['z']
 
     def status_callback(self, msg):
-        # print(msg)
         self.mode = msg['mode']
         self.group = msg['group']
         self.armed = msg['armed']
@@ -85,10 +84,8 @@ class Surfer:
     def detection_callback(self, msg):
         # Process detection data as needed
         for detection in msg['detections']:
-            # print(detection)
             
             bbox = detection['bbox']
-            # print(bbox)
             detection_obj = Detection(
                 x=bbox['center']['position']['x'],
                 y=bbox['center']['position']['y'],
