@@ -75,7 +75,7 @@ class Surfer:
         self.eul[2] = msg['orientation']['z']
 
     def status_callback(self, msg):
-        print(msg)
+        # print(msg)
         self.mode = msg['mode']
         self.group = msg['group']
         self.armed = msg['armed']
