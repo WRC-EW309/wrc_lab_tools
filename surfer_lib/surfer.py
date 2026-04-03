@@ -60,6 +60,12 @@ class Surfer:
         # self.cmd_mot_pub = roslibpy.Topic(self.client, '/'+self.name+'/set_cmd_motor', 'std_msgs/Float32MultiArray')
         # self.cmd_mot_pub.advertise()
 
+        self.log_pub = roslibpy.Topic(self.client, '/'+self.name+'/log_string', 'std_msgs/String')
+        self.log_pub.advertise()
+
+        self.log_array_pub = roslibpy.Topic(self.client, '/'+self.name+'/log_array', 'std_msgs/Float32MultiArray')
+        self.log_array_pub.advertise()
+
         self.srv_reset_imu = roslibpy.Service(self.client, '/'+self.name+'/reset_imu', 'std_srvs/Trigger')
 
     def imu_callback(self, msg):
@@ -121,7 +127,7 @@ class Surfer:
         if self.client and self.client.is_connected:
             request = roslibpy.ServiceRequest()
             result = self.srv_reset_imu.call(request)
-            return result.success
+            return result
         else:
             print("Not connected to rosbridge")
             return False
@@ -189,7 +195,21 @@ class Surfer:
     #         'data': [m1, m2, m3, m4]
     #     })
     #     self.cmd_mot_pub.publish(motor_msg)
-            
+
+    def log(self, message: str) -> None:
+        """Publish a log message to the log topic."""
+        log_msg = roslibpy.Message({
+            'data': message
+        })
+        self.log_pub.publish(log_msg)
+
+    def log_array(self, array: list) -> None:
+        """Publish an array of floats to the log_array topic."""
+        array_msg = roslibpy.Message({
+            'data': array
+        })
+        self.log_array_pub.publish(array_msg)
+
     def connect(self) -> None:
         """Establish connection to rosbridge server."""
         self.client = roslibpy.Ros(host=self.host, port=self.port)
