@@ -89,6 +89,7 @@ class Surfer:
 
     def detection_callback(self, msg):
         # Process detection data as needed
+        self.detections = [] # Only keep the most recent detections
         for detection in msg['detections']:
             
             bbox = detection['bbox']
